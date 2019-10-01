@@ -15,8 +15,11 @@ def main():
 
     sleep(0.35)
 
-    mouse.click(Button.left)
+    mouse.press(Button.left)
 
+    sleep(0.2)
+
+    mouse.release(Button.left)
 
 if __name__ == "__main__":
     main()
