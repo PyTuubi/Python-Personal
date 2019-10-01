@@ -9,4 +9,3 @@ my_list2= ["string",1,2.1]
 print(my_list2[1:])
 
 
-
