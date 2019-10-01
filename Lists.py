@@ -1,5 +1,5 @@
 my_list = [1,2,3]
-my_list2= ["string",1,2.1]
+my_list2 = ["string",1,2.1]
 
 #print(len(my_list)) # List length
 
