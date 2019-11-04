@@ -30,5 +30,12 @@ mystring = "Hello World"
 # Works with tuples also
 tup = (1,2,3)
 
-for item in tup:
-    print(item)
+#for item in tup:
+#    print(item)
+
+# Dictionaries
+d = {"k1":1,"k2":2,"k3":3}
+
+for key,value in d.items():
+    #print(key)
+    print(value)
