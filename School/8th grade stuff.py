@@ -15,7 +15,6 @@ ika = 14
 mjono = "Ikä on"
 #print(mjono, ika, "vuotta.")           # = Ikä on 14 vuotta.
 
-#gsl = grab single letters
 gsletters = "Jonni"
 gsl1 = gsletters[1]
 gsl2 = gsletters[3] + gsletters[4]
@@ -62,4 +61,4 @@ print((num1 + num2) / 2.0)
 #print("Nimessäsi on", len(nimi), "merkkiä.")   # = number of characters
 #print("Etunimesi on ",nimi[0:nimi.find(" ")])  # prints only first name, nimi[0:nimi.find(" ")] = Jonni Liljamo[start from letter 0:find and end at first space(" ")]
 
-input("Press something to exit")           # Use when running in CMD or PowerShell or Terminal
+input("Press something to exit")           # Use when running in CMD, PowerShell or Terminal
