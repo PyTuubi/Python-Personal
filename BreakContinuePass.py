@@ -10,3 +10,11 @@ for letter in mystring:
         #continue
         break           # Self explanatory
     print(letter)
+
+x = 0
+
+while x < 5:
+    if x == 2:
+        break
+    print(x)
+    x += 1
