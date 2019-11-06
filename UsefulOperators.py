@@ -43,4 +43,31 @@ for item in zip(mylist1,mylist2):
 list123 = [1,2,"x",3,4]
 #print("x" in list123) # True
 
+#print("key2" in {"key1":123,"key2":456})
+
+# min max
+
+mylist3 = [10,20,30,40,100]
+
+#print(min(mylist3))        #10
+#print(max(mylist3))        #100
+
+# shuffle
+
+from random import shuffle
+
+mylist4 = [1,2,3,4,5,6,7,8,9,10]
+
+shuffle(mylist4)
+#print(mylist4)
+
+# randint
+
+from random import randint
+
+#print(randint(0,100))       # Random number from 0 to 100
+
+# input()
+
+input("Enter a number: ")
 
