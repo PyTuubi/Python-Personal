@@ -4,9 +4,13 @@
 #paper_doll('Mississippi') --> 'MMMiiissssssiiippppppiii'
 
 def paper_doll(s):
+    result = ''
+
     for l in s:
-        print(l * 3)
+        result += l*3
+    
+    return result
 
 
-paper_doll("Hello")
+print(paper_doll("Hello"))
 

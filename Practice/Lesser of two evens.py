@@ -6,14 +6,8 @@
 
 def lesser_of_two_evens(x,y):
     if x % 2 == 0 and y % 2 == 0:
-        if x < y:
-            print(x)
-        elif x > y:
-            print(y)
-    elif x % 2 != 0 or y % 2 != 0:
-        if x < y:
-            print(y)
-        elif x > y:
-            print(x)
+        return min(x,y)
+    else:
+        return max(x,y)
         
-lesser_of_two_evens(2,4)
+print(lesser_of_two_evens(2,4))

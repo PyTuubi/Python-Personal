@@ -3,6 +3,11 @@
 #old_macdonald('macdonald') --> MacDonald
 
 def old_macdonald(s):
-    pass
+    first = s[0]
+    inbetween = s[1:3]
+    fourth = s[3]
+    rest = s[4:]
 
-old_macdonald("macdonald")
+    return first.upper() + inbetween + fourth.upper() + rest
+
+print(old_macdonald("macdonald"))

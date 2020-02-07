@@ -7,8 +7,8 @@ def master_yoda(s):
     s2 = s.split(" ")
     s2 = s2[-1::-1]
     output = " ".join(s2)
-    print(output)
+    return output
 
-master_yoda("We are ready")
+print(master_yoda("We are ready"))
     
 

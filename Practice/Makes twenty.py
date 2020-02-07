@@ -6,10 +6,10 @@
 
 def makes_twenty(x,y):
     if x + y == 20:
-        print("True")
+        return True
     elif x == 20 or y == 20:
-        print("True")
+        return True
     else:
-        print("False")
+        return False
 
-makes_twenty(2,3)
+print(makes_twenty(20,10))
