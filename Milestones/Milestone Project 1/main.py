@@ -63,37 +63,39 @@ def place_marker(board, marker, position):
 #place_marker(mainBoard,'$',int(input('Position on board: ')))
 #display_board(mainBoard)
 
+winCheck = False
 
 def win_check(board, mark):
     '''
     Check if someone won
     '''
-
-    if full_board_check != True:
+    
+    global winCheck
+    #if full_board_check != True:
     # Horizontal
-        if board[1] == mark and board[2] == mark and board[3] == mark:
-            print(f'{mark} wins!')
-        elif board[4] == mark and board[5] == mark and board[6] == mark:
-            print(f'{mark} wins!')
-        elif board[7] == mark and board[8] == mark and board[9] == mark:
-            print(f'{mark} wins!')
+    if board[1] == mark and board[2] == mark and board[3] == mark:
+        return True
+    elif board[4] == mark and board[5] == mark and board[6] == mark:
+        return True
+    elif board[7] == mark and board[8] == mark and board[9] == mark:
+        return True
 
     # Vertical
-        elif board[1] == mark and board[4] == mark and board[7] == mark:
-            print(f'{mark} wins!')
-        elif board[2] == mark and board[5] == mark and board[8] == mark:
-            print(f'{mark} wins!')
-        elif board[3] == mark and board[6] == mark and board[9] == mark:
-            print(f'{mark} wins!')
+    elif board[1] == mark and board[4] == mark and board[7] == mark:
+        return True
+    elif board[2] == mark and board[5] == mark and board[8] == mark:
+        return True
+    elif board[3] == mark and board[6] == mark and board[9] == mark:
+        return True
 
     # Diagonal
-        elif board[1] == mark and board[5] == mark and board[9] == mark:
-            print(f'{mark} wins!')
-        elif board[3] == mark and board[5] == mark and board[7] == mark:
-            print(f'{mark} wins!')
+    elif board[1] == mark and board[5] == mark and board[9] == mark:
+        return True
+    elif board[3] == mark and board[5] == mark and board[7] == mark:
+        return True
 
-        else:
-            print("\nIt's a draw")
+    else:
+        return False
         
     
 #win_check(test_board,'O')
@@ -202,7 +204,18 @@ while True:
 
         display_board(mainBoard)
         
-        win_check(mainBoard, startingPlayer)
+        if full_board_check(mainBoard) == True:
+            if win_check(mainBoard, startingPlayer) == True:
+                print(f"\n{startingPlayer} won the game")
+
+            elif win_check(mainBoard, startingPlayer) == False:
+                print("\nIt's a draw")
+
+        elif win_check(mainboard, startingPlayer) == True:
+            print(f"\n{startingPlayer} won the game")
+
+        else:
+            continue
 
         # Player2's turn.
         player_choice(mainBoard)
@@ -211,8 +224,18 @@ while True:
 
         display_board(mainBoard)
 
-        if win_check == 
-        
+        if full_board_check(mainBoard) == True:
+            if win_check(mainBoard, secondPlayer) == True:
+                print(f"\n{secondPlayer} won the game")
+
+            elif win_check(mainBoard, secondPlayer) == False:
+                print("\nIt's a draw")
+
+        elif win_check(mainBoard, secondPlayer) == True:
+            print(f"\n{secondPlayer} won the game")
+            
+        else:
+            continue
 
     #if not replay():
         #break
