@@ -1,6 +1,7 @@
 # Tic Tac Toe
 
 import random
+import sys
 
 mainBoard = ['#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
@@ -15,17 +16,12 @@ def display_board(board):
     print('---------')
     print(board[7] + ' | ' + board[8] + ' | ' + board[9])
 
-test_board = ['#','X','O','X','O','X','O','X','O','X']
-#display_board(test_board)
-
-
 def clear_board():
     '''
     Clear board
     '''
 
     print(' \n' * 100)
-
 
 playerOne = ''
 playerTwo = ''
@@ -53,15 +49,8 @@ def player_input():
             print('\nPlease input a valid character.')
             continue
 
-#player_input()
-#print(f'Player one is now: {playerOne}\nPlayer two is now: {playerTwo}')
-
-
 def place_marker(board, marker, position):
     board[position] = marker
-
-#place_marker(mainBoard,'$',int(input('Position on board: ')))
-#display_board(mainBoard)
 
 winCheck = False
 
@@ -97,9 +86,6 @@ def win_check(board, mark):
     else:
         return False
         
-    
-#win_check(test_board,'O')
-
 startingPlayer = ''
 secondPlayer = ''
 
@@ -120,21 +106,16 @@ def choose_first():
         startingPlayer = str(playerTwo)
         secondPlayer = str(playerOne)
 
-#player_input()
-#choose_first()
-#print(f'{startingPlayer} will start the game')
-
-
 def space_check(board, position):
     
-    if board[position] == ' ':
-        return True
-    else:
+    if board[position] != ' ':
         return False
+    else:
+        return True
 
 def full_board_check(board):
     
-    if board[1] != '' and board[2] != '' and board[3] != '' and board[4] != '' and board[5] != '' and board[6] != '' and board[7] != '' and board[8] != '' and board[9] != '':
+    if board[1] != ' ' and board[2] != ' ' and board[3] != ' ' and board[4] != ' ' and board[5] != ' ' and board[6] != ' ' and board[7] != ' ' and board[8] != ' ' and board[9] != ' ':
         return True
 
     # Run win check now for the last time
@@ -146,12 +127,13 @@ def player_choice(board):
     global chosenPos
 
     acceptedInts = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    chosenPos = int(input('\nPosition on board: '))
+    inputChosenPos = int(input('\nPosition on board: '))
 
     while True:
-        if chosenPos in acceptedInts:
-            if space_check(board, chosenPos) == True:
-                return True
+        if inputChosenPos in acceptedInts:
+            if space_check(mainBoard, inputChosenPos) == True:
+                chosenPos = inputChosenPos
+                break
             else:
                 print('\nThat position is not empty')
                 break
@@ -165,34 +147,35 @@ def replay():
     
     global replayCheck
 
-    positiveAns = ['y', 'yes']
-    negativeAns = ['n', 'no']
+    positiveAns = ['y', 'yes', 'Y', 'Yes', 'YES']
+    negativeAns = ['n', 'no', 'N', 'No', 'NO']
 
     #answer = str(input('Replay? [Y]es or [N]o: '))
     checkBool1 = False
 
     while checkBool1 == False:
         answer = str(input('\nReplay? [Y]es or [N]o: '))
-        if answer.lower in positiveAns:
+        if answer in positiveAns:
             replayCheck = True
             checkBool1 = True
-        elif answer.lower in negativeAns:
+        elif answer in negativeAns:
             replayCheck = False
             checkBool1 = True
         else:
             print('\nPlease answer the question')
             continue
         
-
 print('Welcome to Tic Tac Toe!')
 
 while True:
+
     # Set the game up here
     display_board(mainBoard)
     player_input()
     print(f'\nPlayer one is now: {playerOne}\nPlayer two is now: {playerTwo}\n')
     choose_first()
-    print(f'{startingPlayer} will start the game')
+    print(f'{startingPlayer} will start the game\n')
+    display_board(mainBoard)
 
     game_on = True
 
@@ -207,12 +190,15 @@ while True:
         if full_board_check(mainBoard) == True:
             if win_check(mainBoard, startingPlayer) == True:
                 print(f"\n{startingPlayer} won the game")
+                game_on = False
 
             elif win_check(mainBoard, startingPlayer) == False:
                 print("\nIt's a draw")
+                game_on = False
 
         elif win_check(mainBoard, startingPlayer) == True:
             print(f"\n{startingPlayer} won the game")
+            game_on = False
 
         else:
             continue
@@ -227,15 +213,24 @@ while True:
         if full_board_check(mainBoard) == True:
             if win_check(mainBoard, secondPlayer) == True:
                 print(f"\n{secondPlayer} won the game")
+                game_on = False
 
             elif win_check(mainBoard, secondPlayer) == False:
                 print("\nIt's a draw")
+                game_on = False
 
         elif win_check(mainBoard, secondPlayer) == True:
             print(f"\n{secondPlayer} won the game")
+            game_on = False
             
         else:
             continue
 
-    #if not replay():
-        #break
+    if game_on == False:
+        replay()
+        if replayCheck == True:
+            mainBoard = ['#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+            game_on = True
+        else:
+            sys.exit("")
+
