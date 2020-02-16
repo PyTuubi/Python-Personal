@@ -211,7 +211,7 @@ while True:
             elif win_check(mainBoard, startingPlayer) == False:
                 print("\nIt's a draw")
 
-        elif win_check(mainboard, startingPlayer) == True:
+        elif win_check(mainBoard, startingPlayer) == True:
             print(f"\n{startingPlayer} won the game")
 
         else:
