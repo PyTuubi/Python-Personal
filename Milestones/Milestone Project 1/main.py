@@ -6,9 +6,6 @@ import sys
 mainBoard = ['#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
 def display_board(board):
-    '''
-    Print board
-    '''
 
     print("\n" + board[1] + ' | ' + board[2] + ' | ' + board[3])
     print('---------')
@@ -17,9 +14,6 @@ def display_board(board):
     print(board[7] + ' | ' + board[8] + ' | ' + board[9])
 
 def clear_board():
-    '''
-    Clear board
-    '''
 
     print(' \n' * 100)
 
@@ -27,9 +21,6 @@ playerOne = ''
 playerTwo = ''
 
 def player_input():
-    '''
-    Assign markers to players
-    '''
 
     global playerOne
     global playerTwo
@@ -55,9 +46,6 @@ def place_marker(board, marker, position):
 winCheck = False
 
 def win_check(board, mark):
-    '''
-    Check if someone won
-    '''
     
     global winCheck
     #if full_board_check != True:
@@ -90,9 +78,6 @@ startingPlayer = ''
 secondPlayer = ''
 
 def choose_first():
-    '''
-    Assing the starting player
-    '''
 
     global secondPlayer
     global startingPlayer
@@ -108,17 +93,15 @@ def choose_first():
 
 def space_check(board, position):
     
-    if board[position] != ' ':
-        return False
-    else:
+    if board[position] == ' ':
         return True
+    else:
+        return False
 
 def full_board_check(board):
     
     if board[1] != ' ' and board[2] != ' ' and board[3] != ' ' and board[4] != ' ' and board[5] != ' ' and board[6] != ' ' and board[7] != ' ' and board[8] != ' ' and board[9] != ' ':
         return True
-
-    # Run win check now for the last time
 
 chosenPos = 0
 
@@ -150,7 +133,6 @@ def replay():
     positiveAns = ['y', 'yes', 'Y', 'Yes', 'YES']
     negativeAns = ['n', 'no', 'N', 'No', 'NO']
 
-    #answer = str(input('Replay? [Y]es or [N]o: '))
     checkBool1 = False
 
     while checkBool1 == False:
@@ -181,6 +163,8 @@ while True:
 
     while game_on:
         # Player 1 Turn
+        print(f"\n{startingPlayer} turn")
+
         player_choice(mainBoard)
         
         place_marker(mainBoard, startingPlayer, chosenPos)
@@ -191,19 +175,22 @@ while True:
             if win_check(mainBoard, startingPlayer) == True:
                 print(f"\n{startingPlayer} won the game")
                 game_on = False
+                break
 
             elif win_check(mainBoard, startingPlayer) == False:
                 print("\nIt's a draw")
                 game_on = False
+                break
 
         elif win_check(mainBoard, startingPlayer) == True:
             print(f"\n{startingPlayer} won the game")
             game_on = False
+            break
 
-        else:
-            continue
 
         # Player2's turn.
+        print(f"\n{secondPlayer} turn")
+
         player_choice(mainBoard)
 
         place_marker(mainBoard, secondPlayer, chosenPos)
@@ -214,17 +201,18 @@ while True:
             if win_check(mainBoard, secondPlayer) == True:
                 print(f"\n{secondPlayer} won the game")
                 game_on = False
+                break
 
             elif win_check(mainBoard, secondPlayer) == False:
                 print("\nIt's a draw")
                 game_on = False
+                break
 
         elif win_check(mainBoard, secondPlayer) == True:
             print(f"\n{secondPlayer} won the game")
             game_on = False
+            break
             
-        else:
-            continue
 
     if game_on == False:
         replay()
