@@ -110,19 +110,25 @@ def player_choice(board):
     global chosenPos
 
     acceptedInts = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    inputChosenPos = int(input('\nPosition on board: '))
+    
 
-    while True:
-        if inputChosenPos in acceptedInts:
-            if space_check(mainBoard, inputChosenPos) == True:
-                chosenPos = inputChosenPos
-                break
-            else:
-                print('\nThat position is not empty')
-                break
+    tempBool2 = True
+
+    while tempBool2 == True:
+
+        inputChosenPos = str(input('\nPosition on board: '))
+
+        if inputChosenPos.isdigit():
+            if int(inputChosenPos) in acceptedInts:
+                if space_check(mainBoard, int(inputChosenPos)) == True:
+                    chosenPos = int(inputChosenPos)
+                    tempBool2 = False
+                else:
+                    print('\nThat position is not empty')
+
         else:
             print('\nPlease input a number from 1-9.')
-            break
+            
 
 replayCheck = False
 
@@ -162,12 +168,15 @@ while True:
     game_on = True
 
     while game_on:
-        # Player 1 Turn
-        print(f"\n{startingPlayer} turn")
+        # Player 1 Turn        
+
+        print(f"\n{startingPlayer}s turn")
 
         player_choice(mainBoard)
         
         place_marker(mainBoard, startingPlayer, chosenPos)
+
+        clear_board()
 
         display_board(mainBoard)
         
@@ -189,11 +198,14 @@ while True:
 
 
         # Player2's turn.
-        print(f"\n{secondPlayer} turn")
+
+        print(f"\n{secondPlayer}s turn")
 
         player_choice(mainBoard)
 
         place_marker(mainBoard, secondPlayer, chosenPos)
+
+        clear_board()
 
         display_board(mainBoard)
 
@@ -212,7 +224,6 @@ while True:
             print(f"\n{secondPlayer} won the game")
             game_on = False
             break
-            
 
     if game_on == False:
         replay()
