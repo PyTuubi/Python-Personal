@@ -3,6 +3,8 @@ import sys
 
 while True:
     randomnum = random.randint(0, 100)
+    maxtip = 101
+    mintip = 0
     print(randomnum)
     print("Start guessing!")
     guessing = True
@@ -16,4 +18,21 @@ while True:
             else:
                 sys.exit("nuts")
         elif guess > randomnum:
-            print(f"Too much. The number is under {random.randint((randomnum + 1), (randomnum + 15))}")
+            while True:
+                toohightipnum = random.randint((randomnum + 1), (randomnum + 15))
+                if toohightipnum <= maxtip:
+                    maxtip = toohightipnum
+                    print(f"Too high. The number is under {toohightipnum}")
+                    break
+                elif toohightipnum > maxtip:
+                    continue
+
+        elif guess < randomnum:
+            while True:
+                toolowtipnum = random.randint((randomnum - 15), (randomnum - 1))
+                if toolowtipnum >= mintip:
+                    mintip = toolowtipnum
+                    print(f"Too low. The number is more than {toolowtipnum}")
+                    break
+                elif toolowtipnum < mintip:
+                    continue
